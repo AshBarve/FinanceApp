@@ -62,6 +62,7 @@
           "label": "Email address",
           "placeholder": "Enter your email address",
           "keyboard": "email",
+          "inputFilter": "^[A-Za-z0-9._%+-@]*$",
           "maxLength": 100,
           "validations": [
             {
