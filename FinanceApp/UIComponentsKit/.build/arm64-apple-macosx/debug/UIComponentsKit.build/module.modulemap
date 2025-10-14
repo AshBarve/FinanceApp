@@ -1,0 +1,4 @@
+module UIComponentsKit {
+    header "/Users/ashish/Developer/Claude/FinanceApp/UIComponentsKit/.build/arm64-apple-macosx/debug/UIComponentsKit.build/UIComponentsKit-Swift.h"
+    requires objc
+}

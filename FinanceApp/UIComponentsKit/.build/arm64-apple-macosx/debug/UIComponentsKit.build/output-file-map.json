@@ -1,0 +1,65 @@
+{
+  "": {
+    "swift-dependencies": "/Users/ashish/Developer/Claude/FinanceApp/UIComponentsKit/.build/arm64-apple-macosx/debug/UIComponentsKit.build/master.swiftdeps"
+  },
+  "/Users/ashish/Developer/Claude/FinanceApp/UIComponentsKit/Sources/UIComponentsKit/Components/Buttons/PrimaryButton.swift": {
+    "dependencies": "/Users/ashish/Developer/Claude/FinanceApp/UIComponentsKit/.build/arm64-apple-macosx/debug/UIComponentsKit.build/PrimaryButton.d",
+    "object": "/Users/ashish/Developer/Claude/FinanceApp/UIComponentsKit/.build/arm64-apple-macosx/debug/UIComponentsKit.build/PrimaryButton.swift.o",
+    "swiftmodule": "/Users/ashish/Developer/Claude/FinanceApp/UIComponentsKit/.build/arm64-apple-macosx/debug/UIComponentsKit.build/PrimaryButton~partial.swiftmodule",
+    "swift-dependencies": "/Users/ashish/Developer/Claude/FinanceApp/UIComponentsKit/.build/arm64-apple-macosx/debug/UIComponentsKit.build/PrimaryButton.swiftdeps"
+  },
+  "/Users/ashish/Developer/Claude/FinanceApp/UIComponentsKit/Sources/UIComponentsKit/Components/Buttons/SecondaryButton.swift": {
+    "dependencies": "/Users/ashish/Developer/Claude/FinanceApp/UIComponentsKit/.build/arm64-apple-macosx/debug/UIComponentsKit.build/SecondaryButton.d",
+    "object": "/Users/ashish/Developer/Claude/FinanceApp/UIComponentsKit/.build/arm64-apple-macosx/debug/UIComponentsKit.build/SecondaryButton.swift.o",
+    "swiftmodule": "/Users/ashish/Developer/Claude/FinanceApp/UIComponentsKit/.build/arm64-apple-macosx/debug/UIComponentsKit.build/SecondaryButton~partial.swiftmodule",
+    "swift-dependencies": "/Users/ashish/Developer/Claude/FinanceApp/UIComponentsKit/.build/arm64-apple-macosx/debug/UIComponentsKit.build/SecondaryButton.swiftdeps"
+  },
+  "/Users/ashish/Developer/Claude/FinanceApp/UIComponentsKit/Sources/UIComponentsKit/Components/Pickers/CustomPicker.swift": {
+    "dependencies": "/Users/ashish/Developer/Claude/FinanceApp/UIComponentsKit/.build/arm64-apple-macosx/debug/UIComponentsKit.build/CustomPicker.d",
+    "object": "/Users/ashish/Developer/Claude/FinanceApp/UIComponentsKit/.build/arm64-apple-macosx/debug/UIComponentsKit.build/CustomPicker.swift.o",
+    "swiftmodule": "/Users/ashish/Developer/Claude/FinanceApp/UIComponentsKit/.build/arm64-apple-macosx/debug/UIComponentsKit.build/CustomPicker~partial.swiftmodule",
+    "swift-dependencies": "/Users/ashish/Developer/Claude/FinanceApp/UIComponentsKit/.build/arm64-apple-macosx/debug/UIComponentsKit.build/CustomPicker.swiftdeps"
+  },
+  "/Users/ashish/Developer/Claude/FinanceApp/UIComponentsKit/Sources/UIComponentsKit/Components/Pickers/DatePickerField.swift": {
+    "dependencies": "/Users/ashish/Developer/Claude/FinanceApp/UIComponentsKit/.build/arm64-apple-macosx/debug/UIComponentsKit.build/DatePickerField.d",
+    "object": "/Users/ashish/Developer/Claude/FinanceApp/UIComponentsKit/.build/arm64-apple-macosx/debug/UIComponentsKit.build/DatePickerField.swift.o",
+    "swiftmodule": "/Users/ashish/Developer/Claude/FinanceApp/UIComponentsKit/.build/arm64-apple-macosx/debug/UIComponentsKit.build/DatePickerField~partial.swiftmodule",
+    "swift-dependencies": "/Users/ashish/Developer/Claude/FinanceApp/UIComponentsKit/.build/arm64-apple-macosx/debug/UIComponentsKit.build/DatePickerField.swiftdeps"
+  },
+  "/Users/ashish/Developer/Claude/FinanceApp/UIComponentsKit/Sources/UIComponentsKit/Components/RadioButtons/RadioButton.swift": {
+    "dependencies": "/Users/ashish/Developer/Claude/FinanceApp/UIComponentsKit/.build/arm64-apple-macosx/debug/UIComponentsKit.build/RadioButton.d",
+    "object": "/Users/ashish/Developer/Claude/FinanceApp/UIComponentsKit/.build/arm64-apple-macosx/debug/UIComponentsKit.build/RadioButton.swift.o",
+    "swiftmodule": "/Users/ashish/Developer/Claude/FinanceApp/UIComponentsKit/.build/arm64-apple-macosx/debug/UIComponentsKit.build/RadioButton~partial.swiftmodule",
+    "swift-dependencies": "/Users/ashish/Developer/Claude/FinanceApp/UIComponentsKit/.build/arm64-apple-macosx/debug/UIComponentsKit.build/RadioButton.swiftdeps"
+  },
+  "/Users/ashish/Developer/Claude/FinanceApp/UIComponentsKit/Sources/UIComponentsKit/Components/TextFields/CustomTextField.swift": {
+    "dependencies": "/Users/ashish/Developer/Claude/FinanceApp/UIComponentsKit/.build/arm64-apple-macosx/debug/UIComponentsKit.build/CustomTextField.d",
+    "object": "/Users/ashish/Developer/Claude/FinanceApp/UIComponentsKit/.build/arm64-apple-macosx/debug/UIComponentsKit.build/CustomTextField.swift.o",
+    "swiftmodule": "/Users/ashish/Developer/Claude/FinanceApp/UIComponentsKit/.build/arm64-apple-macosx/debug/UIComponentsKit.build/CustomTextField~partial.swiftmodule",
+    "swift-dependencies": "/Users/ashish/Developer/Claude/FinanceApp/UIComponentsKit/.build/arm64-apple-macosx/debug/UIComponentsKit.build/CustomTextField.swiftdeps"
+  },
+  "/Users/ashish/Developer/Claude/FinanceApp/UIComponentsKit/Sources/UIComponentsKit/Components/TextFields/PhoneField.swift": {
+    "dependencies": "/Users/ashish/Developer/Claude/FinanceApp/UIComponentsKit/.build/arm64-apple-macosx/debug/UIComponentsKit.build/PhoneField.d",
+    "object": "/Users/ashish/Developer/Claude/FinanceApp/UIComponentsKit/.build/arm64-apple-macosx/debug/UIComponentsKit.build/PhoneField.swift.o",
+    "swiftmodule": "/Users/ashish/Developer/Claude/FinanceApp/UIComponentsKit/.build/arm64-apple-macosx/debug/UIComponentsKit.build/PhoneField~partial.swiftmodule",
+    "swift-dependencies": "/Users/ashish/Developer/Claude/FinanceApp/UIComponentsKit/.build/arm64-apple-macosx/debug/UIComponentsKit.build/PhoneField.swiftdeps"
+  },
+  "/Users/ashish/Developer/Claude/FinanceApp/UIComponentsKit/Sources/UIComponentsKit/Theme/Colors.swift": {
+    "dependencies": "/Users/ashish/Developer/Claude/FinanceApp/UIComponentsKit/.build/arm64-apple-macosx/debug/UIComponentsKit.build/Colors.d",
+    "object": "/Users/ashish/Developer/Claude/FinanceApp/UIComponentsKit/.build/arm64-apple-macosx/debug/UIComponentsKit.build/Colors.swift.o",
+    "swiftmodule": "/Users/ashish/Developer/Claude/FinanceApp/UIComponentsKit/.build/arm64-apple-macosx/debug/UIComponentsKit.build/Colors~partial.swiftmodule",
+    "swift-dependencies": "/Users/ashish/Developer/Claude/FinanceApp/UIComponentsKit/.build/arm64-apple-macosx/debug/UIComponentsKit.build/Colors.swiftdeps"
+  },
+  "/Users/ashish/Developer/Claude/FinanceApp/UIComponentsKit/Sources/UIComponentsKit/Theme/DesignTokens.swift": {
+    "dependencies": "/Users/ashish/Developer/Claude/FinanceApp/UIComponentsKit/.build/arm64-apple-macosx/debug/UIComponentsKit.build/DesignTokens.d",
+    "object": "/Users/ashish/Developer/Claude/FinanceApp/UIComponentsKit/.build/arm64-apple-macosx/debug/UIComponentsKit.build/DesignTokens.swift.o",
+    "swiftmodule": "/Users/ashish/Developer/Claude/FinanceApp/UIComponentsKit/.build/arm64-apple-macosx/debug/UIComponentsKit.build/DesignTokens~partial.swiftmodule",
+    "swift-dependencies": "/Users/ashish/Developer/Claude/FinanceApp/UIComponentsKit/.build/arm64-apple-macosx/debug/UIComponentsKit.build/DesignTokens.swiftdeps"
+  },
+  "/Users/ashish/Developer/Claude/FinanceApp/UIComponentsKit/Sources/UIComponentsKit/Theme/Fonts.swift": {
+    "dependencies": "/Users/ashish/Developer/Claude/FinanceApp/UIComponentsKit/.build/arm64-apple-macosx/debug/UIComponentsKit.build/Fonts.d",
+    "object": "/Users/ashish/Developer/Claude/FinanceApp/UIComponentsKit/.build/arm64-apple-macosx/debug/UIComponentsKit.build/Fonts.swift.o",
+    "swiftmodule": "/Users/ashish/Developer/Claude/FinanceApp/UIComponentsKit/.build/arm64-apple-macosx/debug/UIComponentsKit.build/Fonts~partial.swiftmodule",
+    "swift-dependencies": "/Users/ashish/Developer/Claude/FinanceApp/UIComponentsKit/.build/arm64-apple-macosx/debug/UIComponentsKit.build/Fonts.swiftdeps"
+  }
+}
