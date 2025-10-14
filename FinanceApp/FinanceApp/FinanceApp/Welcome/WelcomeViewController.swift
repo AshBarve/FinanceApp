@@ -142,7 +142,7 @@ class WelcomeViewController: UIViewController {
         let parser = FlowConfigParser()
         do {
             let config = try parser.parse(from: jsonData)
-            print("✅ Parsed configuration successfully, screens: \(config.screens.count)")
+            print("✅ Parsed configuration successfully, screens: \(config.count)")
 
             // Start account creation flow using UIKit navigation
             guard let navController = navigationController else {
