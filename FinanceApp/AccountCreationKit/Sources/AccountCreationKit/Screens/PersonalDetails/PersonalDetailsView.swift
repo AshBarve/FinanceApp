@@ -1,16 +1,23 @@
 import SwiftUI
 
-public struct PersonalDetailsView: View {
+public struct PersonalDetailsView: ABView {
+    public typealias ViewModel = PersonalDetailsViewModel
+
     let screenConfig: ScreenModel
-    @StateObject private var viewModel = PersonalDetailsViewModel()
+    @ObservedObject public var viewModel: PersonalDetailsViewModel
     let onContinue: () -> Void
 
-    public init(screenConfig: ScreenModel, onContinue: @escaping () -> Void) {
+    public init(
+        screenConfig: ScreenModel,
+        viewModel: PersonalDetailsViewModel,
+        onContinue: @escaping () -> Void
+    ) {
         self.screenConfig = screenConfig
+        self.viewModel = viewModel
         self.onContinue = onContinue
     }
 
-    public var body: some View {
+    public var listBody: some View {
         DynamicFormRenderer(
             screenConfig: screenConfig,
             viewModel: viewModel,

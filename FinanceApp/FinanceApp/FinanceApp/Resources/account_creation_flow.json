@@ -48,7 +48,8 @@
           },
           {
             "type": "phone",
-            "message": "Invalid phone number"
+            "message": "Invalid phone number",
+            "pattern": "^[0-9]{9,15}$"
           }
         ]
       },
@@ -168,16 +169,6 @@
         "type": "dropdown",
         "label": "Marital status",
         "placeholder": "Select marital status",
-        "options": [
-          {
-            "id": "married",
-            "label": "Married"
-          },
-          {
-            "id": "single",
-            "label": "Single"
-          }
-        ],
         "validations": [
           {
             "type": "required",
@@ -207,28 +198,6 @@
         "type": "dropdown",
         "label": "Education level",
         "placeholder": "Select education level",
-        "options": [
-          {
-            "id": "high_school",
-            "label": "High School"
-          },
-          {
-            "id": "bachelors",
-            "label": "Bachelor's Degree"
-          },
-          {
-            "id": "masters",
-            "label": "Master's Degree"
-          },
-          {
-            "id": "doctorate",
-            "label": "Doctorate"
-          },
-          {
-            "id": "other",
-            "label": "Other"
-          }
-        ],
         "validations": [
           {
             "type": "required",
@@ -550,20 +519,6 @@
         "type": "dropdown",
         "label": "Employment sector",
         "placeholder": "Select sector",
-        "options": [
-          {
-            "id": "public_sector",
-            "label": "Public sector"
-          },
-          {
-            "id": "private_sector",
-            "label": "Private sector"
-          },
-          {
-            "id": "self_employed",
-            "label": "Self-employed"
-          }
-        ],
         "conditionalVisibility": {
           "conditions": [
             {

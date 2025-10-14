@@ -9,6 +9,7 @@ public class AccountCreationCoordinator: NSObject, UINavigationControllerDelegat
     private let onCompletion: (AccountCreationResult) -> Void
     private var previousDelegate: UINavigationControllerDelegate?
     private var firstScreenController: UIViewController?
+    private var screenViewModels: [String: BaseFormViewModel] = [:] // Store ViewModels for data collection
 
     public init(
         navigationController: UINavigationController,
@@ -54,8 +55,11 @@ public class AccountCreationCoordinator: NSObject, UINavigationControllerDelegat
 
         switch screen.id {
         case "create_account":
+            let viewModel = CreateAccountViewModel()
+            screenViewModels[screen.id] = viewModel
             let view = CreateAccountView(
                 screenConfig: screen,
+                viewModel: viewModel,
                 onContinue: { [weak self] in
                     self?.navigateToNext()
                 }
@@ -63,8 +67,23 @@ public class AccountCreationCoordinator: NSObject, UINavigationControllerDelegat
             hostingController = UIHostingController(rootView: AnyView(view))
 
         case "personal_details_1", "personal_details_2":
+            let viewModel = PersonalDetailsViewModel()
+            screenViewModels[screen.id] = viewModel
             let view = PersonalDetailsView(
                 screenConfig: screen,
+                viewModel: viewModel,
+                onContinue: { [weak self] in
+                    self?.navigateToNext()
+                }
+            )
+            hostingController = UIHostingController(rootView: AnyView(view))
+
+        case "financial_details":
+            let viewModel = FinancialDetailsViewModel()
+            screenViewModels[screen.id] = viewModel
+            let view = FinancialDetailsView(
+                screenConfig: screen,
+                viewModel: viewModel,
                 onContinue: { [weak self] in
                     self?.navigateToNext()
                 }
@@ -72,8 +91,12 @@ public class AccountCreationCoordinator: NSObject, UINavigationControllerDelegat
             hostingController = UIHostingController(rootView: AnyView(view))
 
         default:
+            // Fallback to PersonalDetailsView for unknown screens
+            let viewModel = PersonalDetailsViewModel()
+            screenViewModels[screen.id] = viewModel
             let view = PersonalDetailsView(
                 screenConfig: screen,
+                viewModel: viewModel,
                 onContinue: { [weak self] in
                     self?.navigateToNext()
                 }
@@ -120,10 +143,79 @@ public class AccountCreationCoordinator: NSObject, UINavigationControllerDelegat
             currentScreenIndex += 1
             showScreen(at: currentScreenIndex)
         } else {
-            // Flow completed
+            // Flow completed - submit all data
             print("   ✅ Flow completed!")
-            cleanupAndComplete(with: .completed([:]))
+            Task {
+                await submitAccountCreation()
+            }
         }
+    }
+
+    // MARK: - Final Submission
+
+    private func submitAccountCreation() async {
+        print("📦 Collecting all form data...")
+
+        // Collect all field values from all screens
+        var allData: [String: Any] = [:]
+
+        for (screenId, viewModel) in screenViewModels {
+            // Convert Date objects to strings for JSON serialization
+            let serializedValues = serializeFieldValues(viewModel.fieldValues)
+            allData[screenId] = serializedValues
+            print("   • Collected data from: \(screenId)")
+        }
+
+        do {
+            print("📡 Submitting to API...")
+            let success = try await AccountCreationService.shared.submitAccountCreation(data: allData)
+
+            await MainActor.run {
+                if success {
+                    print("✅ Submission successful!")
+                    cleanupAndComplete(with: .completed(allData))
+                } else {
+                    print("❌ Submission failed")
+                    showError("Account creation failed. Please try again.")
+                }
+            }
+        } catch {
+            await MainActor.run {
+                print("❌ Submission error: \(error)")
+                showError("Network error: \(error.localizedDescription)")
+            }
+        }
+    }
+
+    /// Converts Date objects to ISO8601 strings for JSON serialization
+    private func serializeFieldValues(_ fieldValues: [String: Any]) -> [String: Any] {
+        var serialized: [String: Any] = [:]
+        let dateFormatter = ISO8601DateFormatter()
+
+        for (key, value) in fieldValues {
+            if let date = value as? Date {
+                // Convert Date to ISO8601 string
+                serialized[key] = dateFormatter.string(from: date)
+            } else {
+                // Keep other values as-is
+                serialized[key] = value
+            }
+        }
+
+        return serialized
+    }
+
+    private func showError(_ message: String) {
+        guard let navController = navigationController else { return }
+
+        let alert = UIAlertController(
+            title: "Error",
+            message: message,
+            preferredStyle: .alert
+        )
+        alert.addAction(UIAlertAction(title: "OK", style: .default))
+
+        navController.present(alert, animated: true)
     }
 
     private func cleanupAndComplete(with result: AccountCreationResult) {

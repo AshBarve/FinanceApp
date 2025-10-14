@@ -1,15 +1,16 @@
 import Foundation
 import Combine
 
-open class BaseFormViewModel: ObservableObject {
+open class BaseFormViewModel: ObservableObject, ABViewModel {
     @Published public var fieldValues: [String: Any] = [:]
     @Published public var fieldErrors: [String: String?] = [:]
     @Published public var isFormValid: Bool = false
     @Published public var touchedFields: Set<String> = [] // Track which fields have been blurred
     @Published public var fieldValuesVersion: Int = 0 // Track changes for animation
+    @Published public var isLoadingOptions: Bool = false // Track API loading state
 
     public let validationEngine = ValidationEngine()
-    public var screenConfig: ScreenModel?
+    @Published public var screenConfig: ScreenModel? // Made @Published to trigger UI updates
 
     public init() {}
 
@@ -92,6 +93,13 @@ open class BaseFormViewModel: ObservableObject {
         if field.type == FieldType.datePicker {
             let dateValue = getDateValue(for: fieldId)
             let result = validationEngine.validateDate(value: dateValue, rules: rules)
+            fieldErrors[fieldId] = filterErrorForDisplay(result.errorMessage, fieldId: fieldId, rules: rules)
+        } else if field.type == FieldType.dropdown && field.isMultiSelect == true {
+            // For multi-select dropdowns, validate the array
+            let arrayValue = getArrayValue(for: fieldId)
+            // Treat empty array as empty string for required validation
+            let valueForValidation = arrayValue.isEmpty ? "" : "has_values"
+            let result = validationEngine.validate(value: valueForValidation, rules: rules)
             fieldErrors[fieldId] = filterErrorForDisplay(result.errorMessage, fieldId: fieldId, rules: rules)
         } else {
             let value = getStringValue(for: fieldId)
@@ -229,5 +237,41 @@ open class BaseFormViewModel: ObservableObject {
         print("   Field errors: \(fieldErrors.filter { $0.value != nil })")
 
         isFormValid = !hasErrors && allRequiredFieldsFilled
+    }
+
+    // MARK: - Dynamic Options Support
+
+    /// Updates the options for a specific field (used when fetching from API)
+    @MainActor
+    public func updateFieldOptions(fieldId: String, options: [OptionModel]) {
+        guard var screen = screenConfig else {
+            print("⚠️ Cannot update options: screenConfig is nil")
+            return
+        }
+
+        // Find the field index
+        if let fieldIndex = screen.fields.firstIndex(where: { $0.id == fieldId }) {
+            var updatedField = screen.fields[fieldIndex]
+            updatedField.options = options
+            screen.fields[fieldIndex] = updatedField
+            screenConfig = screen // @Published will automatically trigger UI update
+
+            print("✅ Updated options for field '\(fieldId)' with \(options.count) options")
+            print("   Field now has: \(screen.fields[fieldIndex].options?.map { $0.label } ?? [])")
+        } else {
+            print("⚠️ Field '\(fieldId)' not found in screen config")
+        }
+    }
+
+    // MARK: - ABViewModel Conformance
+
+    /// Screen title from configuration (required by ABViewModel)
+    public var screenTitle: String? {
+        return screenConfig?.title
+    }
+
+    /// Submit handler (required by ABViewModel)
+    public func submitCompleteHandler() {
+        onContinueTapped()
     }
 }

@@ -43,7 +43,8 @@ public class ValidationEngine {
             )
 
         case ValidationType.email:
-            let emailRegex = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,64}"
+            // Use pattern from rule if provided, otherwise use default
+            let emailRegex = rule.pattern ?? "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,64}"
             let emailPredicate = NSPredicate(format: "SELF MATCHES %@", emailRegex)
             return ValidationResult(
                 isValid: emailPredicate.evaluate(with: value),
@@ -51,7 +52,12 @@ public class ValidationEngine {
             )
 
         case ValidationType.phone:
-            let phoneRegex = "^[0-9]{10,15}$"
+            // Allow empty values - required validation handles emptiness
+            if value.isEmpty {
+                return ValidationResult(isValid: true, errorMessage: nil)
+            }
+            // Use pattern from rule if provided, otherwise use default
+            let phoneRegex = rule.pattern ?? "^[0-9]{9,15}$"
             let phonePredicate = NSPredicate(format: "SELF MATCHES %@", phoneRegex)
             return ValidationResult(
                 isValid: phonePredicate.evaluate(with: value),

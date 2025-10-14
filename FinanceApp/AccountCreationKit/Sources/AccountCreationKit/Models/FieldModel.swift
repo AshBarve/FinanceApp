@@ -10,7 +10,7 @@ public struct FieldModel: Codable, Identifiable {
     public let keyboard: String?
     public let defaultCountryCode: String?
     public let dateFormat: String?
-    public let options: [OptionModel]?
+    public var options: [OptionModel]? // Changed to var to allow updating from API
     public let isDisabled: Bool?
     public let defaultValue: String?
     public let conditionalVisibility: ConditionalVisibility?
@@ -57,8 +57,9 @@ public struct ValidationRule: Codable {
     public let type: String
     public let message: String
     public let value: Int?
+    public let pattern: String? // Regex pattern for validation (e.g., for phone, email)
 
     enum CodingKeys: String, CodingKey {
-        case type, message, value
+        case type, message, value, pattern
     }
 }

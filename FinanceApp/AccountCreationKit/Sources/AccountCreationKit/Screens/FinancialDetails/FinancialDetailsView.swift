@@ -1,16 +1,15 @@
 import SwiftUI
-import MBProgressHUD  // Now available via SPM dependency!
 
-public struct CreateAccountView: ABView {
-    public typealias ViewModel = CreateAccountViewModel
+public struct FinancialDetailsView: ABView {
+    public typealias ViewModel = FinancialDetailsViewModel
 
     let screenConfig: ScreenModel
-    @ObservedObject public var viewModel: CreateAccountViewModel
+    @ObservedObject public var viewModel: FinancialDetailsViewModel
     let onContinue: () -> Void
 
     public init(
         screenConfig: ScreenModel,
-        viewModel: CreateAccountViewModel,
+        viewModel: FinancialDetailsViewModel,
         onContinue: @escaping () -> Void
     ) {
         self.screenConfig = screenConfig

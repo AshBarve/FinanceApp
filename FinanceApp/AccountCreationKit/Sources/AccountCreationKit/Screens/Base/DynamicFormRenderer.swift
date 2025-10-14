@@ -17,9 +17,12 @@ public struct DynamicFormRenderer<ViewModel: BaseFormViewModel>: View {
     }
 
     public var body: some View {
-        VStack(spacing: 0) {
+        // Use viewModel.screenConfig instead of parameter to pick up dynamic updates
+        let currentConfig = viewModel.screenConfig ?? screenConfig
+
+        return VStack(spacing: 0) {
             // Progress bar
-            if let progress = screenConfig.progress {
+            if let progress = currentConfig.progress {
                 ProgressBar(currentStep: progress.currentStep, totalSteps: progress.totalSteps)
                     .padding(.horizontal, DesignTokens.Spacing.large)
                     .padding(.top, DesignTokens.Spacing.small)
@@ -29,12 +32,12 @@ public struct DynamicFormRenderer<ViewModel: BaseFormViewModel>: View {
             ScrollView {
                 VStack(alignment: .leading, spacing: DesignTokens.Spacing.medium) {
                     // Screen title
-                    Text(screenConfig.title)
+                    Text(currentConfig.title)
                         .font(.system(size: 28, weight: .regular))
                         .foregroundColor(.appTextPrimary)
 
                     // Screen subtitle
-                    if let subtitle = screenConfig.subtitle {
+                    if let subtitle = currentConfig.subtitle {
                         Text(subtitle)
                             .font(.system(size: 15))
                             .foregroundColor(.appTextSecondary)
@@ -42,7 +45,8 @@ public struct DynamicFormRenderer<ViewModel: BaseFormViewModel>: View {
                     }
 
                     // Fields - sorted by orderId to ensure correct order
-                    ForEach(screenConfig.fields.sorted { $0.orderId < $1.orderId }) { field in
+                    // Use currentConfig.fields to pick up dynamic option updates
+                    ForEach(currentConfig.fields.sorted { $0.orderId < $1.orderId }) { field in
                         if shouldShowField(field) {
                             renderField(field)
                                 .transition(.asymmetric(
@@ -56,7 +60,7 @@ public struct DynamicFormRenderer<ViewModel: BaseFormViewModel>: View {
                     Spacer(minLength: DesignTokens.Spacing.xlarge)
 
                     // Actions
-                    ForEach(screenConfig.actions) { action in
+                    ForEach(currentConfig.actions) { action in
                         renderAction(action)
                     }
                 }
@@ -66,10 +70,10 @@ public struct DynamicFormRenderer<ViewModel: BaseFormViewModel>: View {
             }
         }
         .background(Color.appSurface)
-        .navigationTitle(screenConfig.headerTitle ?? "")
+        .navigationTitle(currentConfig.headerTitle ?? "")
         .navigationBarTitleDisplayMode(.inline)
         .onAppear {
-            print("📱 Screen appeared: \(screenConfig.title)")
+            print("📱 Screen appeared: \(currentConfig.title)")
             viewModel.screenConfig = screenConfig
             viewModel.onScreenAppear()
         }

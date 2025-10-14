@@ -55,15 +55,11 @@
 		};
 		758D49E12E96FCEF00B9F7DB /* FinanceAppTests */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
-			exceptions = (
-			);
 			path = FinanceAppTests;
 			sourceTree = "<group>";
 		};
 		758D49EB2E96FCEF00B9F7DB /* FinanceAppUITests */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
-			exceptions = (
-			);
 			path = FinanceAppUITests;
 			sourceTree = "<group>";
 		};
@@ -218,8 +214,8 @@
 			mainGroup = 758D49BF2E96FCED00B9F7DB;
 			minimizedProjectReferenceProxies = 1;
 			packageReferences = (
-				7587F7EA2E970001004B5111 /* XCLocalSwiftPackageReference "UIComponentsKit" */,
-				7587F7ED2E970018004B5111 /* XCLocalSwiftPackageReference "AccountCreationKit" */,
+				7587F7EA2E970001004B5111 /* XCLocalSwiftPackageReference "../UIComponentsKit" */,
+				7587F7ED2E970018004B5111 /* XCLocalSwiftPackageReference "../AccountCreationKit" */,
 			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = 758D49C92E96FCED00B9F7DB /* Products */;
@@ -576,11 +572,11 @@
 /* End XCConfigurationList section */
 
 /* Begin XCLocalSwiftPackageReference section */
-		7587F7EA2E970001004B5111 /* XCLocalSwiftPackageReference "UIComponentsKit" */ = {
+		7587F7EA2E970001004B5111 /* XCLocalSwiftPackageReference "../UIComponentsKit" */ = {
 			isa = XCLocalSwiftPackageReference;
 			relativePath = ../UIComponentsKit;
 		};
-		7587F7ED2E970018004B5111 /* XCLocalSwiftPackageReference "AccountCreationKit" */ = {
+		7587F7ED2E970018004B5111 /* XCLocalSwiftPackageReference "../AccountCreationKit" */ = {
 			isa = XCLocalSwiftPackageReference;
 			relativePath = ../AccountCreationKit;
 		};

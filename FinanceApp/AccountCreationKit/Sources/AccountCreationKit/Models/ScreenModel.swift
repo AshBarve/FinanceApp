@@ -8,7 +8,7 @@ public struct ScreenModel: Codable, Identifiable, Hashable {
     public let headerTitle: String?
     public let showBackButton: Bool
     public let progress: ProgressModel?
-    public let fields: [FieldModel]
+    public var fields: [FieldModel] // Changed to var to allow updating field options
     public let actions: [ActionModel]
 
     enum CodingKeys: String, CodingKey {

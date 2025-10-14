@@ -7,4 +7,10 @@
    <FileRef
       location = "group:AccountCreationKit">
    </FileRef>
+   <FileRef
+      location = "group:FinanceApp/FinanceApp.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "group:Pods/Pods.xcodeproj">
+   </FileRef>
 </Workspace>
