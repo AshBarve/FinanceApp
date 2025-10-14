@@ -4,6 +4,7 @@
   "screens": [
     {
       "id": "create_account",
+      "orderId": 1,
       "title": "Let's get started",
       "subtitle": "Enter your information to open a new investment account",
       "headerTitle": "INVESTMENT ACCOUNT OPENING",
@@ -15,9 +16,13 @@
       "fields": [
         {
           "id": "national_id",
+          "orderId": 1,
           "type": "text_field",
           "label": "National ID/Iqama number",
           "placeholder": "Enter your National ID/Iqama number",
+          "keyboard": "number_pad",
+          "inputFilter": "^[0-9]*$",
+          "maxLength": 10,
           "validations": [
             {
               "type": "required",
@@ -28,15 +33,17 @@
               "value": 10,
               "message": "National ID/Iqama number must be at least 10 characters"
             }
-          ],
-          "keyboard": "number_pad"
+          ]
         },
         {
           "id": "mobile_number",
+          "orderId": 2,
           "type": "phone_field",
           "label": "Mobile number",
           "placeholder": "Mobile number",
           "defaultCountryCode": "+966",
+          "inputFilter": "^[0-9]*$",
+          "maxLength": 15,
           "validations": [
             {
               "type": "required",
@@ -50,9 +57,12 @@
         },
         {
           "id": "email",
+          "orderId": 3,
           "type": "text_field",
           "label": "Email address",
           "placeholder": "Enter your email address",
+          "keyboard": "email",
+          "maxLength": 100,
           "validations": [
             {
               "type": "required",
@@ -62,8 +72,7 @@
               "type": "email",
               "message": "Invalid email format"
             }
-          ],
-          "keyboard": "email"
+          ]
         }
       ],
       "actions": [
@@ -77,6 +86,7 @@
     },
     {
       "id": "personal_details_1",
+      "orderId": 2,
       "title": "Personal details",
       "subtitle": "Enter your personal information",
       "headerTitle": "INVESTMENT ACCOUNT OPENING",
@@ -175,10 +185,13 @@
         },
         {
           "id": "number_of_dependents",
+          "orderId": 6,
           "type": "text_field",
           "label": "Number of dependents",
           "placeholder": "Enter number of dependents",
           "keyboard": "number_pad",
+          "inputFilter": "^[0-9]*$",
+          "maxLength": 2,
           "validations": [
             {
               "type": "numeric",
@@ -388,6 +401,7 @@
     },
     {
       "id": "financial_details",
+      "orderId": 3,
       "title": "Financial details",
       "subtitle": "Enter your source of income and wealth",
       "headerTitle": "INVESTMENT ACCOUNT OPENING",
@@ -666,11 +680,14 @@
         },
         {
           "id": "employer_phone_number",
+          "orderId": 23,
           "type": "phone_field",
           "label": "Employer phone number",
           "placeholder": "Phone number",
           "defaultCountryCode": "+966",
           "defaultValue": "476633333",
+          "inputFilter": "^[0-9]*$",
+          "maxLength": 15,
           "conditionalVisibility": {
             "conditions": [
               {
