@@ -1,4 +1,5 @@
 import SwiftUI
+import MBProgressHUD  // Now available via SPM dependency!
 
 public struct CreateAccountView: View {
     let screenConfig: ScreenModel

@@ -17,9 +17,7 @@ public class AccountCreationCoordinator: NSObject, UINavigationControllerDelegat
     ) {
         self.navigationController = navigationController
         // Sort screens by orderId to ensure correct order
-        var sortedConfig = configuration
-        sortedConfig.screens = configuration.screens.sorted { $0.orderId < $1.orderId }
-        self.configuration = sortedConfig
+        self.configuration = configuration.sorted { $0.orderId < $1.orderId }
         self.onCompletion = onCompletion
         super.init()
 
@@ -29,7 +27,7 @@ public class AccountCreationCoordinator: NSObject, UINavigationControllerDelegat
     }
 
     public func start() {
-        guard let config = configuration, !config.screens.isEmpty else {
+        guard let config = configuration, !config.isEmpty else {
             print("❌ No configuration or screens available")
             return
         }
@@ -44,12 +42,12 @@ public class AccountCreationCoordinator: NSObject, UINavigationControllerDelegat
     }
 
     private func showScreen(at index: Int) {
-        guard let config = configuration, index < config.screens.count else {
+        guard let config = configuration, index < config.count else {
             print("❌ Invalid screen index: \(index)")
             return
         }
 
-        let screen = config.screens[index]
+        let screen = config[index]
         print("📱 Showing screen: \(screen.title) (index: \(index))")
 
         let hostingController: UIHostingController<AnyView>
@@ -116,9 +114,9 @@ public class AccountCreationCoordinator: NSObject, UINavigationControllerDelegat
 
         print("🚀 navigateToNext called")
         print("   Current index: \(currentScreenIndex)")
-        print("   Total screens: \(config.screens.count)")
+        print("   Total screens: \(config.count)")
 
-        if currentScreenIndex < config.screens.count - 1 {
+        if currentScreenIndex < config.count - 1 {
             currentScreenIndex += 1
             showScreen(at: currentScreenIndex)
         } else {

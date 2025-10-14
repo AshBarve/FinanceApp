@@ -12,11 +12,15 @@ let package = Package(
             targets: ["AccountCreationKit"]),
     ],
     dependencies: [
-        .package(path: "../UIComponentsKit")
+        .package(path: "../UIComponentsKit"),
+        .package(url: "https://github.com/jdg/MBProgressHUD.git", from: "1.2.0")
     ],
     targets: [
         .target(
             name: "AccountCreationKit",
-            dependencies: ["UIComponentsKit"])
+            dependencies: [
+                "UIComponentsKit",
+                "MBProgressHUD"
+            ])
     ]
 )
